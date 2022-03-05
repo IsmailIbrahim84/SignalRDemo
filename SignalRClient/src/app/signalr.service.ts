@@ -1,24 +1,33 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
-import {HttpTransportType} from '@aspnet/signalr';
 
-@Injectable( { providedIn: 'root' } )
-
+@Injectable({ providedIn: 'root' })
 export class SignalrService {
-  constructor() {
-  }
+  constructor(
+  ) { }
 
-  hubconnection: signalR.HubConnection;
+  hubConnection: signalR.HubConnection;
+
 
   startconnection = () => {
-    this.hubconnection = new signalR.HubConnectionBuilder().withUrl('https://localhost:5001/toaster',
-      {skipNegotiation: true, transport: HttpTransportType.WebSockets}
+    this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://localhost:5001/toaster',
+      {skipNegotiation: true, transport: signalR.HttpTransportType.WebSockets}
     ).build();
 
-    this.hubconnection.start().then(() => {
+    this.hubConnection.start().then(() => {
       console.log('Hub Connection Started');
     }).catch(err => console.log('Error while starting connection: ' + err))
 
+  }
+
+  AskServiceListener() {
+this.hubConnection.invoke('AskServer','hey').catch(err => console.log(err));
+  }
+
+  AskServer() {
+this.hubConnection.on('AskServerResponse',(someText) => {
+  console.log(someText);
+})
   }
 }
 
