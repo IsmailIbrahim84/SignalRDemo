@@ -23,6 +23,6 @@ export class AppComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.signalService.hubconnection.off('skServerResponse');
+    this.signalService.hubConnection.off('skServerResponse');
   }
 }

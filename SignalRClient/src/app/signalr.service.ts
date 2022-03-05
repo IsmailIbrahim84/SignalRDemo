@@ -1,14 +1,20 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import * as signalR from '@aspnet/signalr';
 
 @Injectable({ providedIn: 'root' })
-export class SignalrService {
+export class SignalrService implements OnInit{
   constructor(
   ) { }
+  hubConnection!: signalR.HubConnection;
+  ngOnInit(): void {
 
-  hubConnection: signalR.HubConnection;
+    this.startconnection();
+    }
 
-
+  //
+  // hubConnection: signalR.HubConnection;
+  //
+  //
   startconnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://localhost:5001/toaster',
       {skipNegotiation: true, transport: signalR.HttpTransportType.WebSockets}
