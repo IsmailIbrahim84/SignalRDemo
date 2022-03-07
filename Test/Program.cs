@@ -24,15 +24,20 @@
 
 bool solution(string inputString)
 {
+    //The following more faster:
+    char[] charArray = inputString.ToCharArray();
+    Array.Reverse( charArray );
 
-    char[] temp = inputString.ToCharArray();
-    string reversed = "";
-    for (int i = temp.Length-1; i >= 0; i--)
-    {
-        reversed += temp[i].ToString();
-    }
+    return inputString == new string(charArray);
+
+    //char[] temp = inputString.ToCharArray();
+    //string reversed = "";
+    //for (int i = temp.Length-1; i >= 0; i--)
+    //{
+    //    reversed += temp[i].ToString();
+    //}
     
-    return inputString == reversed;
+    
 }
 
 Console.WriteLine(solution("aabaa"));
