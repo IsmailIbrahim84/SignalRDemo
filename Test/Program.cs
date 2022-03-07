@@ -32,14 +32,7 @@ bool solution(string inputString)
         reversed += temp[i].ToString();
     }
     
-    if (inputString == reversed)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return inputString == reversed;
 }
 
 Console.WriteLine(solution("aabaa"));
