@@ -24,20 +24,34 @@
 
 bool solution(string inputString)
 {
-    //The following more faster:
+    var watch1 = new System.Diagnostics.Stopwatch();
+    var watch2 = new System.Diagnostics.Stopwatch();
+    string reversed = "";        
+    watch1.Start();
+
+    //More faster:
     char[] charArray = inputString.ToCharArray();
     Array.Reverse( charArray );
+    reversed = new string(charArray);
+    //----------------------------
+    watch1.Stop();
 
-    return inputString == new string(charArray);
+    //Slower
+    reversed = "";
+    watch2.Start();
+    
+    char[] temp = inputString.ToCharArray();
+    
+    for (int i = temp.Length - 1; i >= 0; i--)
+    {
+        reversed += temp[i].ToString();
+    }
+    watch2.Stop();
+    Console.WriteLine($"Execution Time-Watch1: {watch1.Elapsed} ElapsedTime, Execution Time-Watch2: {watch2.Elapsed} ElapsedTime");
+   // if (watch1.)
+    //return inputString == new string(charArray);
+    return inputString == reversed;
 
-    //char[] temp = inputString.ToCharArray();
-    //string reversed = "";
-    //for (int i = temp.Length-1; i >= 0; i--)
-    //{
-    //    reversed += temp[i].ToString();
-    //}
-    
-    
 }
 
 Console.WriteLine(solution("aabaa"));
