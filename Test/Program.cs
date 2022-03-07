@@ -29,7 +29,7 @@ bool solution(string inputString)
     string reversed = "";        
     watch1.Start();
 
-    //More faster:
+    //More faster in the huge amount of string:
     char[] charArray = inputString.ToCharArray();
     Array.Reverse( charArray );
     reversed = new string(charArray);
@@ -54,5 +54,4 @@ bool solution(string inputString)
 
 }
 
-Console.WriteLine(solution("aabaa"));
-
+Console.WriteLine(solution("saippuakivikauppias"));
