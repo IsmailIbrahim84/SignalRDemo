@@ -11,10 +11,7 @@ export class SignalrService implements OnInit{
     this.startconnection();
     }
 
-  //
-  // hubConnection: signalR.HubConnection;
-  //
-  //
+
   startconnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://localhost:5001/toaster',
       {skipNegotiation: true, transport: signalR.HttpTransportType.WebSockets}
