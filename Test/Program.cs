@@ -27,7 +27,7 @@ bool solution(string inputString)
 
     char[] temp = inputString.ToCharArray();
     string reversed = "";
-    for (int i = temp.Length-1; i > 0; i--)
+    for (int i = temp.Length-1; i >= 0; i--)
     {
         reversed += temp[i].ToString();
     }
