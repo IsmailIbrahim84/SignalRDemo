@@ -76,4 +76,58 @@
 //    return result;
 //}
 //Console.WriteLine(Solution(inputArray));
-///////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+//int Solution(int n)
+//{
+
+//    if (n <0)
+//    {
+//        return 0;
+//    }
+//    else
+//    {
+//        return (n * n) + ((n - 1) * (n - 1));
+//    }
+
+    
+//}
+//Console.WriteLine(Solution(3));
+
+///////////////////////////////////////////////////////////
+//int[] inputArray = {6, 2, 3, 8};
+//int Solution(int[] statues)
+//{
+    
+//    int max = statues.Max();
+//    int count = 0;
+//    Array.Sort(statues);
+//    for (int i = 0; i < statues.Length-1; i++)
+//    {
+//        count += statues[i + 1] - statues[i] - 1;
+
+//    }
+
+//    return count;
+//}
+//Console.WriteLine(Solution(inputArray));
+
+//////
+int[] inputArray = { 1, 3, 2,1};
+Array.Sort(inputArray);
+bool Solution(int[] sequence)
+{
+    int count = 0;
+    for (int i = 0; i < sequence.Length-1; i++)
+    {
+        if (sequence[i + 1] > sequence[i])
+        {
+            count++;
+        }
+
+
+    }
+
+    return count > 1;
+}
+
+Console.WriteLine(Solution(inputArray));
