@@ -112,22 +112,30 @@
 //Console.WriteLine(Solution(inputArray));
 
 //////
-int[] inputArray = { 1, 3, 2,1};
-Array.Sort(inputArray);
-bool Solution(int[] sequence)
-{
-    int count = 0;
-    for (int i = 0; i < sequence.Length-1; i++)
-    {
-        if (sequence[i + 1] > sequence[i])
-        {
-            count++;
+int[] inputArray = { 1, 3, 2,};
+bool Solution(int[] sequence){
+        if (sequence.Length == 2) {return true;}
+        int countOne = 0;
+        int countTwo = 0;
+        for (int i = 0; i < sequence.Length - 1; i++) {
+            if (sequence[i] >= sequence[i+1]) {
+                countOne++;
+            }
+            if(i != 0) {
+                if (sequence[i - 1] >= sequence[i + 1]) {
+                    countTwo++;
+                }
+            }
+        }
+    
+        if (countOne == 1 && countTwo <= 1) {
+            return true;
         }
 
+        return false;
 
-    }
 
-    return count > 1;
+
 }
 
 Console.WriteLine(Solution(inputArray));
